@@ -92,7 +92,6 @@ module.exports = {
         alias:{
             // 配置常用目录别名
             '@':path.join(__dirname,'src'),
-            'Utils':path.join(__dirname, 'src/utils')
         }
     }
 }

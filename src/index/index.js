@@ -1,93 +1,178 @@
 import './index.scss'
+import '../common/common.scss'
+import axios from 'axios'
 
-console.log("index.js");
-
-// import axios from 'axios';
-
-// 导入默认值  变量名随意写
-// import test from './utils/test'
-
-// 引入单独抛出的变量， 变量名必须和抛出的变量一致
-// import { a, b, fn, aa } from './utils/test'
-
-// 默认值和单独抛出的值一起使用
-// import ss,{ a, b } from './utils/test'
-
-// 修改导入的变量名
-// import { a as t,b, fn ,aa} from './utils/test'
-
-// console.log( ss,t ,b,fn,aa)
-
-// 导入此文件中所有的变量
-//  import * as all from './utils/test'
-
-// console.log(all);
+const $ = (el, parent = document) => parent.querySelector(el)
+const $all = (el, parent = document) => [...parent.querySelectorAll(el)]
 
 
+// 渲染综合
+async function render1(){
+    const res = await axios.get('https://zyxcl.xyz/exam_api/zh')
+    console.log(res.data.items);
+    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+        return`
+            <dl>
+                <dt><img src="${everyItem.img}" alt=""></dt>
+                <dd>
+                    <p>${everyItem.title}</p>
+                    <p class="all">
+                        <span class="price">￥${everyItem.price}</span><span class="sell">月销${everyItem.sold}笔</span>
+                    </p> 
+                </dd>
+            </dl>
+        `
+    }).join("")
 
-// const a = 1000
+}
+render1()
+// 渲染销量
+async function render2(){
+    const res = await axios.get('https://zyxcl.xyz/exam_api/xl')
+    console.log(res.data.items);
+    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+        return`
+            <dl>
+                <dt><img src="${everyItem.img}" alt=""></dt>
+                <dd>
+                    <p>${everyItem.title}</p>
+                    <p class="all">
+                        <span class="price">￥${everyItem.price}</span><span class="sell">月销${everyItem.sold}笔</span>
+                    </p> 
+                </dd>
+            </dl>
+        `
+    }).join("")
 
-// import sum from './utils/sum'
-// import './scss/style.scss'
-// import data from'./data/data.json'
-// import tu1 from './assets/tu1.jpg'
-// import tu2 from './assets/tu2.jpg'
-// import tu3 from './assets/tu3.jpg'
-// import tu4 from './assets/tu4.jpg'
-// import tu5 from './assets/tu5.jpg'
+}
+render2()
+// 渲染上新
+async function render3(){
+    const res = await axios.get('https://zyxcl.xyz/exam_api/sx')
+    console.log(res.data.items);
+    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+        return`
+            <dl>
+                <dt><img src="${everyItem.img}" alt=""></dt>
+                <dd>
+                    <p>${everyItem.title}</p>
+                    <p class="all">
+                        <span class="price">￥${everyItem.price}</span><span class="sell">月销${everyItem.sold}笔</span>
+                    </p> 
+                </dd>
+            </dl>
+        `
+    }).join("")
+
+}
+render3()
+
+// 渲染综合
+async function render21(){
+    const res = await axios.get('https://zyxcl.xyz/exam_api/zh')
+    console.log(res.data.items);
+    $(".list2").innerHTML = res.data.items.map((everyItem , i)=>{
+        return`
+        <dl>
+            <dt><img src="${everyItem.img}" alt=""></dt>
+            <dd>
+                <p>${everyItem.title}</p>
+                <p class="sell1">月销${everyItem.sold}笔</p>
+                <p class="price">￥${everyItem.price}</p>
+            </dd>
+        </dl>
+        `
+    }).join("")
+
+}
+render21()
+// 渲染销量
+async function render22(){
+    const res = await axios.get('https://zyxcl.xyz/exam_api/xl')
+    console.log(res.data.items);
+    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+        return`
+        <dl>
+            <dt><img src="${everyItem.img}" alt=""></dt>
+            <dd>
+                <p>${everyItem.title}</p>
+                <p class="sell1">月销${everyItem.sold}笔</p>
+                <p class="price">￥${everyItem.price}</p>
+            </dd>
+        </dl>
+        `
+    }).join("")
+
+}
+render22()
+
+// 渲染上新
+async function render23(){
+    const res = await axios.get('https://zyxcl.xyz/exam_api/sx')
+    console.log(res.data.items);
+    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+        return`
+            <dl>
+                <dt><img src="${everyItem.img}" alt=""></dt>
+                <dd>
+                    <p>${everyItem.title}</p>
+                    <p class="sell1">月销${everyItem.sold}笔</p>
+                    <p class="price">￥${everyItem.price}</p>
+                </dd>
+            </dl>
+        `
+    }).join("")
+
+}
+render23()
 
 
 
-// console.log(tu1);
-// console.log(tu2);
-// console.log(tu3);
-// console.log(tu4);
-// console.log(tu5);
+// 绑定点击事件
+$(".zonghe").addEventListener('click', () => {
+    // 排他
+    const active = $(".active1")
+    active && active.classList.remove("active1")
+    $(".zonghe").classList.add("active1")
+    render1()
+    render21()
+})
+$(".xiaoliang").addEventListener('click', () => {
+    // 排他
+    const active = $(".active1")
+    active && active.classList.remove("active1")
+    $(".xiaoliang").classList.add("active1")
+    render2()
+    render22()
+})
+$(".shangxin").addEventListener('click', () => {
+    // 排他
+    const active = $(".active1")
+    active && active.classList.remove("active1")
+    $(".shangxin").classList.add("active1")
+    render3()
+    render23()
+})
+// 点击更多
+$(".moreWg").addEventListener('click', () => {
+    $(".moreWg").classList.remove("active")
+    $(".moreLb").classList.remove("none")
+    $(".moreLb").classList.add("active")
+    $(".moreWg").classList.add("none")
 
-// function createImg(url){
-//     const image = new Image()
-//     image.src = url
-//     console.log(url)
-//     document.body.appendChild(image)// 把图片追加到页面
-// }
-// createImg(tu1)
-// createImg(tu2)
-// createImg(tu3)
-// createImg(tu4)
-// createImg(tu5)
+    $(".scroll").classList.remove("active")
+    $(".scroll2").classList.remove("none")
+    $(".scroll2").classList.add("active")
+    $(".scroll").classList.add("none")
+})
+$(".moreLb").addEventListener('click', () => {
+    $(".moreLb").classList.remove("active")
+    $(".moreWg").classList.remove("none")
+    $(".moreWg").classList.add("active")
+    $(".moreLb").classList.add("none")
 
-// console.log(data);
-// console.log(sum(1,2))
-
-
-// const sum =(a,b) => {
-//     console.log(a,b);
-// }
-// import Swiper JS
-// import Swiper from 'swiper';
-// // import Swiper styles
-// import 'swiper/css';
-
-// const swiper = new Swiper('.swiper');
-
-// setTimeout(() =>{
-//     console.log(sum(11111,22222));
-//     console.log(b);
-// },Math.random())
-
-// let b = 'BBBBBBB'
-// setTimeout(() => {
-//     b += Math.random()
-//     console.log(b)
-// },333)
-// setTimeout(() => {
-//     b += Math.random()
-//     console.log(b)
-// },Math.random() + 1000)
-
-
-// document.querySelector('h1').style.color = 'red'
-
-// axios.get('/api/sell/api/seller').then(res => {
-//     console.log(111,res.data);
-// })
+    $(".scroll2").classList.remove("active")
+    $(".scroll").classList.remove("none")
+    $(".scroll").classList.add("active")
+    $(".scroll2").classList.add("none")
+})
