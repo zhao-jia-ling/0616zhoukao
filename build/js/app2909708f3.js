@@ -63,4 +63,4 @@ __webpack_require__.r(__webpack_exports__);
 console.log("details.js");
 /******/ })()
 ;
-//# sourceMappingURL=app2fa7a7862.js.map
+//# sourceMappingURL=app2909708f3.js.map

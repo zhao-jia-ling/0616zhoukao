@@ -6,11 +6,11 @@ const $ = (el, parent = document) => parent.querySelector(el)
 const $all = (el, parent = document) => [...parent.querySelectorAll(el)]
 
 
-// 渲染综合
-async function render1(){
-    const res = await axios.get('https://zyxcl.xyz/exam_api/zh')
+// 网格渲染综合
+async function render(page,url){
+    const res = await axios.get(url)
     console.log(res.data.items);
-    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+    page.innerHTML = res.data.items.map((everyItem , i)=>{
         return`
             <dl>
                 <dt><img src="${everyItem.img}" alt=""></dt>
@@ -25,107 +25,21 @@ async function render1(){
     }).join("")
 
 }
-render1()
+render($(".list") , 'https://zyxcl.xyz/exam_api/zh')
+
 // 渲染销量
-async function render2(){
-    const res = await axios.get('https://zyxcl.xyz/exam_api/xl')
-    console.log(res.data.items);
-    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
-        return`
-            <dl>
-                <dt><img src="${everyItem.img}" alt=""></dt>
-                <dd>
-                    <p>${everyItem.title}</p>
-                    <p class="all">
-                        <span class="price">￥${everyItem.price}</span><span class="sell">月销${everyItem.sold}笔</span>
-                    </p> 
-                </dd>
-            </dl>
-        `
-    }).join("")
-
-}
-render2()
-// 渲染上新
-async function render3(){
-    const res = await axios.get('https://zyxcl.xyz/exam_api/sx')
-    console.log(res.data.items);
-    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
-        return`
-            <dl>
-                <dt><img src="${everyItem.img}" alt=""></dt>
-                <dd>
-                    <p>${everyItem.title}</p>
-                    <p class="all">
-                        <span class="price">￥${everyItem.price}</span><span class="sell">月销${everyItem.sold}笔</span>
-                    </p> 
-                </dd>
-            </dl>
-        `
-    }).join("")
-
-}
-render3()
-
-// 渲染综合
-async function render21(){
-    const res = await axios.get('https://zyxcl.xyz/exam_api/zh')
-    console.log(res.data.items);
-    $(".list2").innerHTML = res.data.items.map((everyItem , i)=>{
-        return`
-        <dl>
-            <dt><img src="${everyItem.img}" alt=""></dt>
-            <dd>
-                <p>${everyItem.title}</p>
-                <p class="sell1">月销${everyItem.sold}笔</p>
-                <p class="price">￥${everyItem.price}</p>
-            </dd>
-        </dl>
-        `
-    }).join("")
-
-}
-render21()
-// 渲染销量
-async function render22(){
-    const res = await axios.get('https://zyxcl.xyz/exam_api/xl')
-    console.log(res.data.items);
-    $(".list2").innerHTML = res.data.items.map((everyItem , i)=>{
-        return`
-        <dl>
-            <dt><img src="${everyItem.img}" alt=""></dt>
-            <dd>
-                <p>${everyItem.title}</p>
-                <p class="sell1">月销${everyItem.sold}笔</p>
-                <p class="price">￥${everyItem.price}</p>
-            </dd>
-        </dl>
-        `
-    }).join("")
-
-}
-render22()
+render($(".list") , 'https://zyxcl.xyz/exam_api/xl')
 
 // 渲染上新
-async function render23(){
-    const res = await axios.get('https://zyxcl.xyz/exam_api/sx')
-    console.log(res.data.items);
-    $(".list2").innerHTML = res.data.items.map((everyItem , i)=>{
-        return`
-            <dl>
-                <dt><img src="${everyItem.img}" alt=""></dt>
-                <dd>
-                    <p>${everyItem.title}</p>
-                    <p class="sell1">月销${everyItem.sold}笔</p>
-                    <p class="price">￥${everyItem.price}</p>
-                </dd>
-            </dl>
-        `
-    }).join("")
+render($(".list") , 'https://zyxcl.xyz/exam_api/sx')
 
-}
-render23()
 
+// 列表渲染综合
+render($(".list2") , 'https://zyxcl.xyz/exam_api/zh')
+// 渲染销量
+render($(".list2") , 'https://zyxcl.xyz/exam_api/xl')
+// 渲染上新
+render($(".list2") , 'https://zyxcl.xyz/exam_api/sx')
 
 
 // 绑定点击事件
@@ -135,9 +49,9 @@ $(".zonghe").addEventListener('click', () => {
     active && active.classList.remove("active1")
     $(".zonghe").classList.add("active1")
     if($(".moreWg").classList.contains("active")){
-        render1()
+        render($(".list") , 'https://zyxcl.xyz/exam_api/zh')
     }else{
-        render21()
+        render($(".list2") , 'https://zyxcl.xyz/exam_api/zh')
     }
 })
 $(".xiaoliang").addEventListener('click', () => {
@@ -146,9 +60,10 @@ $(".xiaoliang").addEventListener('click', () => {
     active && active.classList.remove("active1")
     $(".xiaoliang").classList.add("active1")
     if($(".moreWg").classList.contains("active")){
-        render2()
+        render($(".list") , 'https://zyxcl.xyz/exam_api/xl')
+
     }else{
-        render22()
+        render($(".list2") , 'https://zyxcl.xyz/exam_api/xl')
     }
 })
 $(".shangxin").addEventListener('click', () => {
@@ -157,9 +72,9 @@ $(".shangxin").addEventListener('click', () => {
     active && active.classList.remove("active1")
     $(".shangxin").classList.add("active1")
     if($(".moreWg").classList.contains("active")){
-        render3()
+        render($(".list") , 'https://zyxcl.xyz/exam_api/sx')
     }else{
-        render23()
+        render($(".list2") , 'https://zyxcl.xyz/exam_api/sx')
     }
 })
 // 点击切换
