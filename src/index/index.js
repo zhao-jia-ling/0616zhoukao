@@ -90,7 +90,7 @@ render21()
 async function render22(){
     const res = await axios.get('https://zyxcl.xyz/exam_api/xl')
     console.log(res.data.items);
-    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+    $(".list2").innerHTML = res.data.items.map((everyItem , i)=>{
         return`
         <dl>
             <dt><img src="${everyItem.img}" alt=""></dt>
@@ -110,7 +110,7 @@ render22()
 async function render23(){
     const res = await axios.get('https://zyxcl.xyz/exam_api/sx')
     console.log(res.data.items);
-    $(".list").innerHTML = res.data.items.map((everyItem , i)=>{
+    $(".list2").innerHTML = res.data.items.map((everyItem , i)=>{
         return`
             <dl>
                 <dt><img src="${everyItem.img}" alt=""></dt>
@@ -134,26 +134,35 @@ $(".zonghe").addEventListener('click', () => {
     const active = $(".active1")
     active && active.classList.remove("active1")
     $(".zonghe").classList.add("active1")
-    render1()
-    render21()
+    if($(".moreWg").classList.contains("active")){
+        render1()
+    }else{
+        render21()
+    }
 })
 $(".xiaoliang").addEventListener('click', () => {
     // 排他
     const active = $(".active1")
     active && active.classList.remove("active1")
     $(".xiaoliang").classList.add("active1")
-    render2()
-    render22()
+    if($(".moreWg").classList.contains("active")){
+        render2()
+    }else{
+        render22()
+    }
 })
 $(".shangxin").addEventListener('click', () => {
     // 排他
     const active = $(".active1")
     active && active.classList.remove("active1")
     $(".shangxin").classList.add("active1")
-    render3()
-    render23()
+    if($(".moreWg").classList.contains("active")){
+        render3()
+    }else{
+        render23()
+    }
 })
-// 点击更多
+// 点击切换
 $(".moreWg").addEventListener('click', () => {
     $(".moreWg").classList.remove("active")
     $(".moreLb").classList.remove("none")
