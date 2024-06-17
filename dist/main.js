@@ -1,1 +1,0 @@
-(()=>{"use strict";const o="BBBBB";console.log(o);const s=o;setTimeout((()=>{console.log(void console.log(11111,22222)),console.log(s)}),Math.random())})();
