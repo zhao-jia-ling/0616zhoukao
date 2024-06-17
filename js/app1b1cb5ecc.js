@@ -4734,22 +4734,22 @@ var $all = function $all(el) {
   return _toConsumableArray(parent.querySelectorAll(el));
 };
 
-// 渲染综合
-function render1() {
+// 网格渲染综合
+function render(_x, _x2) {
   return _render.apply(this, arguments);
 }
 function _render() {
-  _render = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+  _render = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(page, url) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('https://zyxcl.xyz/exam_api/zh');
+          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get(url);
         case 2:
           res = _context.sent;
           console.log(res.data.items);
-          $(".list").innerHTML = res.data.items.map(function (everyItem, i) {
+          page.innerHTML = res.data.items.map(function (everyItem, i) {
             return "\n            <dl>\n                <dt><img src=\"".concat(everyItem.img, "\" alt=\"\"></dt>\n                <dd>\n                    <p>").concat(everyItem.title, "</p>\n                    <p class=\"all\">\n                        <span class=\"price\">\uFFE5").concat(everyItem.price, "</span><span class=\"sell\">\u6708\u9500").concat(everyItem.sold, "\u7B14</span>\n                    </p> \n                </dd>\n            </dl>\n        ");
           }).join("");
         case 5:
@@ -4760,144 +4760,20 @@ function _render() {
   }));
   return _render.apply(this, arguments);
 }
-render1();
-// 渲染销量
-function render2() {
-  return _render2.apply(this, arguments);
-}
-function _render2() {
-  _render2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
-        case 0:
-          _context2.next = 2;
-          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('https://zyxcl.xyz/exam_api/xl');
-        case 2:
-          res = _context2.sent;
-          console.log(res.data.items);
-          $(".list").innerHTML = res.data.items.map(function (everyItem, i) {
-            return "\n            <dl>\n                <dt><img src=\"".concat(everyItem.img, "\" alt=\"\"></dt>\n                <dd>\n                    <p>").concat(everyItem.title, "</p>\n                    <p class=\"all\">\n                        <span class=\"price\">\uFFE5").concat(everyItem.price, "</span><span class=\"sell\">\u6708\u9500").concat(everyItem.sold, "\u7B14</span>\n                    </p> \n                </dd>\n            </dl>\n        ");
-          }).join("");
-        case 5:
-        case "end":
-          return _context2.stop();
-      }
-    }, _callee2);
-  }));
-  return _render2.apply(this, arguments);
-}
-render2();
-// 渲染上新
-function render3() {
-  return _render3.apply(this, arguments);
-}
-function _render3() {
-  _render3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
-        case 0:
-          _context3.next = 2;
-          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('https://zyxcl.xyz/exam_api/sx');
-        case 2:
-          res = _context3.sent;
-          console.log(res.data.items);
-          $(".list").innerHTML = res.data.items.map(function (everyItem, i) {
-            return "\n            <dl>\n                <dt><img src=\"".concat(everyItem.img, "\" alt=\"\"></dt>\n                <dd>\n                    <p>").concat(everyItem.title, "</p>\n                    <p class=\"all\">\n                        <span class=\"price\">\uFFE5").concat(everyItem.price, "</span><span class=\"sell\">\u6708\u9500").concat(everyItem.sold, "\u7B14</span>\n                    </p> \n                </dd>\n            </dl>\n        ");
-          }).join("");
-        case 5:
-        case "end":
-          return _context3.stop();
-      }
-    }, _callee3);
-  }));
-  return _render3.apply(this, arguments);
-}
-render3();
+render($(".list"), 'https://zyxcl.xyz/exam_api/zh');
 
-// 渲染综合
-function render21() {
-  return _render4.apply(this, arguments);
-}
-function _render4() {
-  _render4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
-        case 0:
-          _context4.next = 2;
-          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('https://zyxcl.xyz/exam_api/zh');
-        case 2:
-          res = _context4.sent;
-          console.log(res.data.items);
-          $(".list2").innerHTML = res.data.items.map(function (everyItem, i) {
-            return "\n        <dl>\n            <dt><img src=\"".concat(everyItem.img, "\" alt=\"\"></dt>\n            <dd>\n                <p>").concat(everyItem.title, "</p>\n                <p class=\"sell1\">\u6708\u9500").concat(everyItem.sold, "\u7B14</p>\n                <p class=\"price\">\uFFE5").concat(everyItem.price, "</p>\n            </dd>\n        </dl>\n        ");
-          }).join("");
-        case 5:
-        case "end":
-          return _context4.stop();
-      }
-    }, _callee4);
-  }));
-  return _render4.apply(this, arguments);
-}
-render21();
 // 渲染销量
-function render22() {
-  return _render5.apply(this, arguments);
-}
-function _render5() {
-  _render5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
-        case 0:
-          _context5.next = 2;
-          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('https://zyxcl.xyz/exam_api/xl');
-        case 2:
-          res = _context5.sent;
-          console.log(res.data.items);
-          $(".list2").innerHTML = res.data.items.map(function (everyItem, i) {
-            return "\n        <dl>\n            <dt><img src=\"".concat(everyItem.img, "\" alt=\"\"></dt>\n            <dd>\n                <p>").concat(everyItem.title, "</p>\n                <p class=\"sell1\">\u6708\u9500").concat(everyItem.sold, "\u7B14</p>\n                <p class=\"price\">\uFFE5").concat(everyItem.price, "</p>\n            </dd>\n        </dl>\n        ");
-          }).join("");
-        case 5:
-        case "end":
-          return _context5.stop();
-      }
-    }, _callee5);
-  }));
-  return _render5.apply(this, arguments);
-}
-render22();
+render($(".list"), 'https://zyxcl.xyz/exam_api/xl');
 
 // 渲染上新
-function render23() {
-  return _render6.apply(this, arguments);
-}
-function _render6() {
-  _render6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-      while (1) switch (_context6.prev = _context6.next) {
-        case 0:
-          _context6.next = 2;
-          return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('https://zyxcl.xyz/exam_api/sx');
-        case 2:
-          res = _context6.sent;
-          console.log(res.data.items);
-          $(".list2").innerHTML = res.data.items.map(function (everyItem, i) {
-            return "\n            <dl>\n                <dt><img src=\"".concat(everyItem.img, "\" alt=\"\"></dt>\n                <dd>\n                    <p>").concat(everyItem.title, "</p>\n                    <p class=\"sell1\">\u6708\u9500").concat(everyItem.sold, "\u7B14</p>\n                    <p class=\"price\">\uFFE5").concat(everyItem.price, "</p>\n                </dd>\n            </dl>\n        ");
-          }).join("");
-        case 5:
-        case "end":
-          return _context6.stop();
-      }
-    }, _callee6);
-  }));
-  return _render6.apply(this, arguments);
-}
-render23();
+render($(".list"), 'https://zyxcl.xyz/exam_api/sx');
+
+// 列表渲染综合
+render($(".list2"), 'https://zyxcl.xyz/exam_api/zh');
+// 渲染销量
+render($(".list2"), 'https://zyxcl.xyz/exam_api/xl');
+// 渲染上新
+render($(".list2"), 'https://zyxcl.xyz/exam_api/sx');
 
 // 绑定点击事件
 $(".zonghe").addEventListener('click', function () {
@@ -4906,9 +4782,9 @@ $(".zonghe").addEventListener('click', function () {
   active && active.classList.remove("active1");
   $(".zonghe").classList.add("active1");
   if ($(".moreWg").classList.contains("active")) {
-    render1();
+    render($(".list"), 'https://zyxcl.xyz/exam_api/zh');
   } else {
-    render21();
+    render($(".list2"), 'https://zyxcl.xyz/exam_api/zh');
   }
 });
 $(".xiaoliang").addEventListener('click', function () {
@@ -4917,9 +4793,9 @@ $(".xiaoliang").addEventListener('click', function () {
   active && active.classList.remove("active1");
   $(".xiaoliang").classList.add("active1");
   if ($(".moreWg").classList.contains("active")) {
-    render2();
+    render($(".list"), 'https://zyxcl.xyz/exam_api/xl');
   } else {
-    render22();
+    render($(".list2"), 'https://zyxcl.xyz/exam_api/xl');
   }
 });
 $(".shangxin").addEventListener('click', function () {
@@ -4928,9 +4804,9 @@ $(".shangxin").addEventListener('click', function () {
   active && active.classList.remove("active1");
   $(".shangxin").classList.add("active1");
   if ($(".moreWg").classList.contains("active")) {
-    render3();
+    render($(".list"), 'https://zyxcl.xyz/exam_api/sx');
   } else {
-    render23();
+    render($(".list2"), 'https://zyxcl.xyz/exam_api/sx');
   }
 });
 // 点击切换
@@ -4956,4 +4832,4 @@ $(".moreLb").addEventListener('click', function () {
 });
 /******/ })()
 ;
-//# sourceMappingURL=app1909708f3.js.map
+//# sourceMappingURL=app1b1cb5ecc.js.map
